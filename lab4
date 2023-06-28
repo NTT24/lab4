@@ -1,0 +1,120 @@
+#include<iostream>
+#include<cmath>
+#include<string>
+using namespace std;
+
+int Bin_to_Dec(long long int s){//Function convert binary to decimal
+    long long int dec = 0, i = 0, rem;
+    while (s != 0) {
+         rem = s % 10;
+         s /= 10;
+         dec += rem * pow(2, i);
+         ++i;
+    }
+    return dec;
+}
+
+void Dec_to_bin(long long int s){//Function convert decimal to binary
+    long long int a[1000];
+    long long int i = 0;
+    while (s > 0){
+        a[i] = s % 2;
+        s = s / 2;
+        i++;
+    }
+    for (int j = i - 1; j >= 0; j--){
+        cout<<a[j];
+    }
+}
+
+int Bin_to_oct(long long int bin){//Funtion covert binary to octal
+    int octal = 0;
+    int temp = Bin_to_Dec(bin);
+    long long int i = 1;
+    while (temp > 0){
+        octal += (temp % 8) * i;
+        temp = temp / 8;
+        i *= 10;
+    }
+    return octal;
+}
+
+int Oct_to_Dec(long long int oct){//Function octal to decimal
+    long long int dec = 0;
+    long long int i = 0;
+    while (oct > 0 ){
+        dec += (oct % 10) * pow(8,i);
+        ++i;
+        oct /= 10;
+    }
+    return dec;
+}
+void Oct_to_Bin(long long int oct){//Function octal to binary
+    long long int Bin;
+    long long int temp = Oct_to_Dec(oct);
+    return Dec_to_bin(temp);
+}
+
+void menu()//Function to display the menu
+{
+    int choice;
+    bool check = false;
+    do{
+    cout << "Press 1 to convert bin to dec"<<endl;
+    cout << "Press 2 to convert dec to bin"<<endl;
+    cout << "Press 3 to convert bin to octal"<<endl;
+    cout << "Press 4 to convert octal to dec"<<endl;
+    cout << "Press 5 to convert octal to bin"<<endl;
+    cout << "Press 0 to finish"<<endl;
+    cout << "Do not press anything else"<<endl;
+    cout << "Please type here -> ";
+    cin>>choice;
+    switch(choice){
+        case 1:
+            int Bin;
+            cout<<"Number is: ";
+            cin>>Bin;
+            cout<<"The answer is: ";
+            cout<<Bin_to_Dec(Bin)<<endl;
+            break;
+        case 2:
+            int Dec;
+            cout<<"Number is ";
+            cin>>Dec;
+            cout<<"The answer is: ";
+            Dec_to_bin(Dec);
+            cout<<endl;
+            break;
+        case 3:
+            int bin;
+            cout<<"Number is: ";
+            cin>>bin;
+            cout<<Bin_to_oct(bin)<<endl;
+            break;
+        case 4:
+            int Oct;
+            cout<<"Number is: ";
+            cin>>Oct;
+            cout<<Oct_to_Dec(Oct)<<endl;
+            break;
+        case 5:
+            int oct;
+            cout<<"Number is: ";
+            cin>>oct;
+            Oct_to_Bin(oct);
+            cout<<endl;
+            break;
+ 
+        case 0:
+            cout<<"That's all, Thank you for typing.\n"<<endl;
+            break;
+        default:
+            cout<<"Input invalid, please type again."<<endl;
+            break;
+    }
+    } while (choice != 0);
+}
+
+int main(){
+    menu();
+}
