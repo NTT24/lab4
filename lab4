@@ -90,7 +90,7 @@ int main() {
                 }
                 break;
 
-            case 5:
+            /*case 5:
                 int upper_count = 0;
                 int lower_count = 0;
                 int digit_count = 0;
@@ -115,7 +115,7 @@ int main() {
                 printf("Digit characters: %d\n", digit_count);
                 printf("Space characters: %d\n", space_count);
                 break;
-
+*/
             case 0:
                 printf("Exiting...\n");
                 break;
